@@ -1,0 +1,28 @@
+{
+  "name": "bliss_arts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salilmalik/Bliss-Arts.git"
+  },
+  "author": "Malik,Salil;Bhatia,Pankaj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/salilmalik/Bliss-Arts/issues"
+  },
+  "homepage": "https://github.com/salilmalik/Bliss-Arts#readme",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "lodash": "^3.10.1",
+    "mongoose": "^4.1.3",
+    "morgan": "^1.6.1",
+    "node-restful": "^0.2.2"
+  }
+}
