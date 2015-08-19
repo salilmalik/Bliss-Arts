@@ -7,7 +7,6 @@ var _ = require("lodash");
 var config = require('./config');
 var path = require('path');
 
-
 var app = express(); // define our app using express
 // APP CONFIGURATION ==================
 // ====================================
@@ -16,7 +15,6 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
-
 
 // configure our app to handle CORS requests
 app.use(function (req, res, next) {
@@ -31,12 +29,20 @@ app.use(morgan('dev'));
 
 app.use(express.static(__dirname + '/public'));
 
-var apiRoutes = require('./app/routes/imageapi')(app, express);
-app.use('/api/image', apiRoutes);
+mongoose.connect(config.database);
 
-var apiRoutes = require('./app/routes/userapi')(app, express);
-app.use('/api', apiRoutes);
+app.models=require('./app/models/index');
 
+var routes=require('./app/routes');
+
+_.each(routes,function(controller,route){
+	app.use(route,controller(app,route));
+});
+//var apiRoutes = require('./app/routes/imageapi')(app, express);
+//app.use('/api/image', apiRoutes);
+
+//var apiRoutes = require('./app/routes/userapi')(app, express);
+//app.use('/api', apiRoutes);
 
 app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname + '/public/app/index.html'));
