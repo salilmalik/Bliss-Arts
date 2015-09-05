@@ -1,42 +1,40 @@
-var blissArts=angular.module('blissArts', ['ngRoute','homePageController','productsController','aboutUsController','clientsController','testimonialsController']);
+var blissArts=angular.module('blissArts', ['ngRoute']);
 blissArts.config(['$routeProvider',function($routeProvider){
 
 $routeProvider
-	.when('/',
+	.when('/home',
 	{
 		controller:'homePageController',
-		templateUrl:'../views/homePage.html'
+		templateUrl:'app/views/homePage.html'
 	}
 	)
 	.when('/products',
 	{
 		controller:'productsController',
-		templateUrl:'../views/products.html'
+		templateUrl:'app/views/products.html'
 	})
 	.when('/clients',
 	{
 		controller:'clientsController',
-		templateUrl:'../views/clients.html'
+		templateUrl:'app/views/clients.html'
 	})
 	.when('/testimonials',
 	{
 		controller:'testimonialsController',
-		templateUrl:'../views/testimonials.html'
+		templateUrl:'app/views/testimonials.html'
 	})
 	.when('/aboutUs',
     {
         controller: 'aboutUsController',
-        templateUrl: '../views/aboutUs.html'
+        templateUrl: 'app/views/aboutUs.html'
     }
     )
     .when('/contactUs',
     {
 
-        templateUrl: '../views/contactUs.html'
+        templateUrl: 'app/views/contactUs.html'
     }
     )
-	.otherwise({redirectTo:'/'
-	});
 	} ]);
 
 

@@ -45,7 +45,7 @@ _.each(routes,function(controller,route){
 //app.use('/api', apiRoutes);
 
 app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname + '/public/app/index.html'));
+    res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
 });
 
 app.listen(config.port);
