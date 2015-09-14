@@ -1,12 +1,11 @@
-var blissArts=angular.module('blissArts', ['ngRoute','customFilters','cart','homePageController','aboutUsController','clientsController','testimonialsController']);
-blissArts.constant("dataUrl", "http://localhost:2403/products");
-blissArts.constant("orderUrl", "http://localhost:2403/orders");
-blissArts.config(['$routeProvider',function($routeProvider){
+var blissArts=angular.module('blissArts', ['ngRoute','customFilters','cart']);
+blissArts.constant("dataUrl", "http://localhost:8080/api/products");
+blissArts.constant("orderUrl", "http://localhost:8080/api/orders");
+blissArts.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
 
 $routeProvider
 	.when('/',
 	{
-		controller:'productController',
 		templateUrl:'app/views/products.html'
 	}
 	)
@@ -18,9 +17,10 @@ $routeProvider
     })
     .when('/placeOrder', {
         templateUrl: "app/views/placeOrder.html"
-    })
-    .otherwise({redirectTo:'/'
-	});
+    });
+    // get rid of the hash in the URL
+    $locationProvider.html5Mode(true);
+   
 	} ]);
 
 
@@ -35,6 +35,7 @@ blissArts.controller('navController',['$scope', '$location', function ($scope, $
 
 
 	blissArts.controller("productController", function ($scope,$http, dataUrl,orderUrl,$location,cart) {
+        alert("PRODUCT CONTROLLER CALLED");
 		$scope.data = {};
 		$http.get(dataUrl)
 			.success(function (data) {
@@ -43,7 +44,7 @@ blissArts.controller('navController',['$scope', '$location', function ($scope, $
 			.error(function (error) {
 				$scope.data.error = error;
 			})
-
+      alert("PRODUCT CONTROLLER CALLED 2");
         $scope.sendOrder = function (shippingDetails) {
             var order = angular.copy(shippingDetails);
             order.products = cart.getProducts();
@@ -58,6 +59,7 @@ blissArts.controller('navController',['$scope', '$location', function ($scope, $
                     $location.path("/complete");
                 });
         }
+        alert("PRODUCT CONTROLLER CALLED 3");
 
 	});
 
