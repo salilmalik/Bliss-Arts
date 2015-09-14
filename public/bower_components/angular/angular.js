@@ -2203,9 +2203,7 @@ function setupModuleLoader(window) {
         if (configFn) {
           config(configFn);
         }
-
         return moduleInstance;
-
         /**
          * @param {string} provider
          * @param {string} method
