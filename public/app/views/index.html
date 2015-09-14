@@ -1,3 +1,4 @@
+<!--
 <html ng-app='blissArts'>
 <head>
 	<script type="text/javascript" src="../../bower_components/angular/angular.js"></script>
@@ -104,3 +105,42 @@
 </html>
 
 
+-->
+
+<!DOCTYPE html>
+<html ng-app='blissArts'>
+<head>
+    <title>Bliss Arts</title>
+    <script src="../../bower_components/angular/angular.js"></script>
+    <link href="../../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="../../bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../bower_components/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="../js/app.js"></script>
+    <script type="text/javascript" src="../controllers/homePageController.js"></script>
+    <script type="text/javascript" src="../controllers/aboutUsController.js"></script>
+    <script type="text/javascript" src="../controllers/clientsController.js"></script>
+    <script type="text/javascript" src="../controllers/testimonialsController.js"></script>
+    <script type="text/javascript" src="../controllers/productListControllers.js"></script>
+    <script type="text/javascript" src="../filters/customFilters.js"></script>
+    <script type="text/javascript" src="../js/cart.js"></script>
+    <script type="text/javascript" src="../controllers/checkoutControllers.js"></script>
+
+
+</head>
+
+<body ng-controller="productController">
+
+<div class="navbar navbar-inverse">
+    <a class="navbar-brand" href="#">Bliss Arts</a>
+    <cart-summary />
+</div>
+<div class="alert alert-danger" ng-show="data.error">
+    Error ({{data.error.status}}). The product data was not loaded.
+    <a href="./index.html" class="alert-link">Click here to try again</a>
+
+</div>
+
+
+<ng-view />
+</body>
+</html>
