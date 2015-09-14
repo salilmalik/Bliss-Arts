@@ -7,17 +7,17 @@ $routeProvider
 	.when('/',
 	{
 		controller:'productController',
-		templateUrl:'../views/products.html'
+		templateUrl:'app/views/products.html'
 	}
 	)
     .when('/checkout', {
-        templateUrl: '../views/checkoutSummary.html'
+        templateUrl: 'app/views/checkoutSummary.html'
     })
     .when('/complete', {
-        templateUrl: "../views/thankYou.html"
+        templateUrl: "app/views/thankYou.html"
     })
     .when('/placeOrder', {
-        templateUrl: "../views/placeOrder.html"
+        templateUrl: "app/views/placeOrder.html"
     })
     .otherwise({redirectTo:'/'
 	});
