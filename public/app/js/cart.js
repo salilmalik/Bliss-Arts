@@ -37,7 +37,7 @@ angular.module("cart", [])
     .directive("cartSummary", function (cart) {
         return {
             restrict: "E",
-            templateUrl: "../views/cartSummary.html",
+            templateUrl: "Bliss-Arts/public/app/views/cartSummary.html",
             controller: function ($scope) {
                 var cartData = cart.getProducts();
                 $scope.total = function () {

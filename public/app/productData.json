@@ -1,0 +1,16 @@
+{"products":[
+{
+"Category": "wassup",
+"Name": "Alex",
+"Color": "Programmer",
+"productPrice": 200,
+"size": {
+"S": true,
+"M": false,
+"L": true,
+"XL": true
+}
+}
+        ]}
+
+

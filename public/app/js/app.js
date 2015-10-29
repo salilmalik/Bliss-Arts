@@ -1,12 +1,13 @@
 var blissArts=angular.module('blissArts', ['ngRoute','customFilters','cart']);
-blissArts.constant("dataUrl", "http://localhost:8080/api/products");
+blissArts.constant("dataUrl", "Bliss-Arts/public/app/productData.json");
 blissArts.constant("orderUrl", "http://localhost:8080/api/orders");
 blissArts.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
 
 $routeProvider
 	.when('/',
 	{
-		templateUrl:'app/views/products.html'
+		templateUrl:'app/views/products.html',
+        controller:'productListController'
 	}
 	)
     .when('/checkout', {
@@ -24,27 +25,19 @@ $routeProvider
 	} ]);
 
 
-/*
-blissArts.controller('navController',['$scope', '$location', function ($scope, $location) {
-        $scope.navClass = function (page) {
-            var currentRoute = $location.path().substring(1) ;
-            return page === currentRoute ? 'active' : '';
-        }}]);
-*/
-
-
 
 	blissArts.controller("productController", function ($scope,$http, dataUrl,orderUrl,$location,cart) {
-        alert("PRODUCT CONTROLLER CALLED");
+
 		$scope.data = {};
 		$http.get(dataUrl)
 			.success(function (data) {
 				$scope.data.products = data;
+                alert("success");
 			})
 			.error(function (error) {
 				$scope.data.error = error;
 			})
-      alert("PRODUCT CONTROLLER CALLED 2");
+
         $scope.sendOrder = function (shippingDetails) {
             var order = angular.copy(shippingDetails);
             order.products = cart.getProducts();
@@ -59,7 +52,7 @@ blissArts.controller('navController',['$scope', '$location', function ($scope, $
                     $location.path("/complete");
                 });
         }
-        alert("PRODUCT CONTROLLER CALLED 3");
+
 
 	});
 
