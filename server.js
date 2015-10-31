@@ -29,15 +29,16 @@ app.use(morgan('dev'));
 
 app.use(express.static(__dirname + '/public'));
 
-mongoose.connect(config.database);
 
 app.models=require('./app/models/index');
 
 var routes=require('./app/routes');
 
 _.each(routes,function(controller,route){
+	console.log('routes'+route);
 	app.use(route,controller(app,route));
 });
+console.log('routes'+routes);
 //var apiRoutes = require('./app/routes/imageapi')(app, express);
 //app.use('/api/image', apiRoutes);
 
@@ -47,6 +48,16 @@ _.each(routes,function(controller,route){
 app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
 });
+mongoose.connect('mongodb://blissarts:kuchbhi77@ds035663.mongolab.com:35663/blissarts');
 
+mongoose.connection.on("open", function(ref) {
+  console.log("Connected to mongo server.");
+
+});
+
+mongoose.connection.on("error", function(err) {
+  console.log("Could not connect to mongo server!");
+  return console.log(err);
+  });
 app.listen(config.port);
 console.log('Magic happens on port ' + config.port);
